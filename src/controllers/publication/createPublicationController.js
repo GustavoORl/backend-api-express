@@ -1,10 +1,19 @@
-import { createPubli } from "../../models/useModel.js";
+import { createPubli, validatePubli } from "../../models/publiModel.js";
 
 export async function createPublicationController(req, res){
     
     const publi = req.body;
 
-    const result = await createPubli(publi);
+    const {success, error, data} = validatePubli(publi, {id: true});
+
+    if(!success){
+        return res.status(400).json({
+            message:"Erro de validação",
+            fieldErrors: error
+    });
+}
+
+    const result = await createPubli(data);
 
     res.json({
         message: "Publicação criada com sucesso!",

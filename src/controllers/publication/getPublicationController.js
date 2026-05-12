@@ -1,4 +1,4 @@
-import { getPublis } from "../../models/useModel.js";
+import { getPublis } from "../../models/publiModel.js";
 
 export async function getPublicationController(req, res){
     
