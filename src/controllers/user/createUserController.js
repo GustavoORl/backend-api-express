@@ -1,5 +1,6 @@
 import { createUser, validateUser } from "../../models/userModel.js";
 import { treeifyError, flattenError } from "zod";
+import bcrypt from "bcrypt";
 
 export async function createUserController(req, res, next) {
 
@@ -15,7 +16,7 @@ export async function createUserController(req, res, next) {
             });
         }
 
-
+        data.pass = await bcrypt.hash(data.pass, 10);
 
         const result = await createUser(data);
 

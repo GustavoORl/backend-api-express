@@ -18,14 +18,38 @@ export const validateUser = createValidator(userSchema);
 
 export const createUser = async (user) => {
     return await prisma.user.create({
-        data: user
+        data: user,
+        select: {
+            id: true,
+            avatar: true,
+            name: true,
+            email: true
+        }
     })
 }
 
 export const getUsers = async (name) => {
-    return await prisma.user.findMany(
-        name ? { where: { name: { contains: name} } } : {}
-    )
+    return await prisma.user.findMany({
+        where: name ? {
+            name: {
+                contains: name
+            }
+        } : {},
+        select: {
+            id: true,
+            avatar: true,
+            name: true,
+            email: true
+        }
+    })
+}
+
+export const getUserByEmail = async (email) => {
+    return await prisma.user.findUnique({
+        where: {
+            email
+        }
+    })
 }
 
 export const deleteUser = async (id) => {
