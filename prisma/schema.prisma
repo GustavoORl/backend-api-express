@@ -27,7 +27,7 @@ model publi {
 model session {
   id Int @id @default(autoincrement())
   userId Int
-  token String @db.VarChar(500)
+  token String @unique @db.VarChar(500)
   createdAt DateTime @default(now())
 
   user user @relation(fields: [userId], references: [id])

@@ -72,3 +72,23 @@ Gerar as funções para interagir com os modelos no esquema: - npx prisma genera
 Abre as tabelas criadas: - npx prisma studio
 
 JSON é uma String que representa um objeto do JavaScript Front - objeto javaScript Request transforma em json Backend transforma em objeto e é manipulado em JavaScript
+======================================================================================================================
+
+Validação de Dados com Zod
+Para que serve a biblioteca do Zod?
+Para que serve a função Partial?
+Qual a diferença do parse para o safeParse?
+Tratamento de Erros
+Qual o papel do ErrorHandler?
+Quais erros devem ser tratados pelo ErrorHandler e quais devem ser tratados no try catch do controller?
+Quais os parametros de entrada de um middlaweare de ErrorHandler?
+Query Params (/user/?name=renan)
+Como capturar um parametro query da url no Controller?
+Para que são utilizados em geral os query params?
+Autenticação com JWT
+Quais as diferenças dos métodos de Autenticação? E como funciona?
+Basic Access ou Auth - Base64 (email:pass)
+Bearer Token (Opaque)
+Bearer Token JWT
+Bearer Token JWT + Refresh Token
+Quais as características do JWT?

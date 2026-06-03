@@ -10,6 +10,8 @@ export async function loginController(req, res, next) {
     try {
         const { email, pass } = req.body;
 
+        console.log(req.body);
+
         const { success, error, data } = validateUser({ email, pass }, { id: true, name: true, avatar: true });
 
         if(!success){
@@ -17,6 +19,8 @@ export async function loginController(req, res, next) {
                 message: "Email ou senha incorreto!",
             })
         }
+
+        console.log(data);
 
         const user = await getUserByEmail(data.email);
 

@@ -14,6 +14,19 @@ export const getSessionByToken = async (token, userId) => {
         where: {
             token,
             userId
+        },
+        select: {
+            id: true,
+            userId: true,
+            token: true,
+            createdAt: true,
+            user: {
+                select: {
+                    name: true,
+                    avatar: true,
+                    email: true
+                }
+            }
         }
     })
 }
@@ -26,3 +39,11 @@ export const deleteSession = async (token, userId) => {
         }
     })
 }     
+
+export const deleteAllSessionsByUserId = async (userId) => {
+    return await prisma.session.deleteMany({
+        where: {
+            userId
+        }
+    })
+}   
